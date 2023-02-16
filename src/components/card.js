@@ -5,6 +5,19 @@ import {ReactComponent as Clapping} from './../Icons/clapping.svg'
 
 
 export default function Card({item}) {
+
+    const [clapCount,setClapCount] = React.useState(item.claps);
+
+    const [like,setLike] = React.useState(false);
+
+    const increaseClap = () => {
+        setClapCount(clapCount+1);
+    }
+
+    const changeLike = () => {
+        setLike(!like);
+    } 
+
     return (
         <div>
           {/* {data.map((item) => ( */}
@@ -33,13 +46,11 @@ export default function Card({item}) {
                 </div>
                 <div class="interaction">
                     <div class="claps">
-                        <Clapping className='Clapping'/> {item.claps}
+                        <Clapping className='Clapping' onClick={increaseClap}/> {clapCount}
                     </div>
                     <div class="likes">
-                        {item.liked && <HeartRed className='HeartRed'/>}
-                        {!item.liked && <HeartBlack className='HeartBlack'/>}
-
-                        
+                        {like && <HeartRed onClick={changeLike} className='HeartRed' />}
+                        {!like && <HeartBlack onClick={changeLike} className='HeartBlack' />}
 
                     </div>
 
