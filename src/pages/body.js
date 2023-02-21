@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "./card";
-import data from './../mockData/index.json'
+import Card from "../components/Card/card";
+import data from '../mockData/index.json'
 
 
 export default function Body() {
